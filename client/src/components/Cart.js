@@ -6,31 +6,28 @@ const Cart = () => {
     const [productList, setProductList] = useState([{}]);
     const [total, setTotal] = useState(0)
 
-    // useEffect(() => {
-    //     console.log(productList);
-    // }, [productList])
-
     const addProduct = () => {
         setProductList([...productList, {}])
-        console.log(productList);
     }
 
     const onValueChange = (e, index) => {
-
         let tempArr = productList;
-
         let tempObj = tempArr[index];
-
         tempObj[e.target.name] = e.target.value;
 
         if (tempObj.qty != undefined && tempObj.price != undefined) {
-            tempObj.sub_total = tempObj.qty * tempObj.price;
+            if (e.target.name == "product" && e.target.value == "Notebook") {
+                console.log('t1');
+                if (tempObj.qty > 2 && tempObj.price > 499) {
+                    console.log('Hi')
+                }
+            } else {
+                tempObj.sub_total = tempObj.qty * tempObj.price;
+            }
         }
 
         tempArr[index] = tempObj;
-
         setProductList(tempArr);
-
     }
 
     return (
