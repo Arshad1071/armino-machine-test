@@ -37,15 +37,15 @@ const Cart = () => {
                                                                 <div  class="col">
                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Product Name" />
+                                                                        <input class="form-control input-box form-foodwagon-control" id="productName" type="text" placeholder="Enter Product Name" />
                                                                     </div>
-                                                                    <div  style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Price" />
+                                                                        <input class="form-control input-box form-foodwagon-control" id="price" type="text" placeholder="Enter Price" />
                                                                     </div>
-                                                                    <div  style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Price" />
+                                                                        <input class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
                                                                     </div>
                                                                 </div>
                                                                 {
@@ -55,7 +55,24 @@ const Cart = () => {
                                                                         </div>
                                                                         : null
                                                                 }
+
                                                             </form>
+                                                            {productList.length == index + 1 ?
+                                                                <form class="row gx-2 gy-2 align-items-center">
+                                                                    <div class="col">
+                                                                        <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                            <label class="visually-hidden" for="inputDelivery">Address</label>
+                                                                            <input class="form-control input-box form-foodwagon-control" id="cpCode" type="text" placeholder="Enter Cupone Code" />
+                                                                        </div>
+                                                                        <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                            <label class="visually-hidden" for="inputDelivery">Address</label>
+                                                                            <input class="form-control input-box form-foodwagon-control" id="total" type="text" placeholder='Total' />
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </form> : null
+                                                            }
 
                                                         </div>
                                                     )
