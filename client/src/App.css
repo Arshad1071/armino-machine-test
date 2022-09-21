@@ -1,0 +1,17 @@
+.App {
+  background-color:#5bb051;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+} 
+.container{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+} 
+
+
+
+
