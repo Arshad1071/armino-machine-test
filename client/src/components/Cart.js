@@ -18,9 +18,7 @@ const Cart = () => {
     const onValueChange = (e, index) => {
         let tempObj = productList[index];
         tempObj[e.target.name] = e.target.value;
-        // console.log(tempObj);
-        //console.log({ , });
-        //setProductList(tempArr);
+
     }
 
     return (
