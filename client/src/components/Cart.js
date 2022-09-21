@@ -6,9 +6,9 @@ const Cart = () => {
     const [productList, setProductList] = useState([{}]);
     const [total, setTotal] = useState(0)
 
-    useEffect(() => {
-        console.log(productList);
-    }, [productList])
+    // useEffect(() => {
+    //     console.log(productList);
+    // }, [productList])
 
     const addProduct = () => {
         setProductList([...productList, {}])
@@ -16,8 +16,20 @@ const Cart = () => {
     }
 
     const onValueChange = (e, index) => {
-        let tempObj = productList[index];
+
+        let tempArr = productList;
+
+        let tempObj = tempArr[index];
+
         tempObj[e.target.name] = e.target.value;
+
+        if (tempObj.qty != undefined && tempObj.price != undefined) {
+            tempObj.sub_total = tempObj.qty * tempObj.price;
+        }
+
+        tempArr[index] = tempObj;
+
+        setProductList(tempArr);
 
     }
 
@@ -63,6 +75,14 @@ const Cart = () => {
 
                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                         <input onChange={(e) => onValueChange(e, index)} name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
+                                                                    </div>
+
+                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                        <input
+                                                                            readOnly
+                                                                            name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text"
+                                                                            value={item.sub_total}
+                                                                            placeholder="sub_total" />
                                                                     </div>
 
                                                                 </div>
