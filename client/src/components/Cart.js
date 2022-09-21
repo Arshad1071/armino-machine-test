@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/css/theme.css';
 
 const Cart = () => {
 
-    const [productList, setProductList] = useState([{}, {}, {}])
+    const [productList, setProductList] = useState([{}]);
+    const [total, setTotal] = useState(0)
 
+    useEffect(() => {
+        console.log(productList);
+    }, [productList])
+
+    const addProduct = () => {
+        setProductList([...productList, {}])
+        console.log(productList);
+    }
+
+    const onValueChange = (e, index) => {
+        let tempObj = productList[index];
+        tempObj[e.target.name] = e.target.value;
+        // console.log(tempObj);
+        //console.log({ , });
+        //setProductList(tempArr);
+    }
 
     return (
         <div>
 
             <main class="main" id="top">
                 <section class="py-5 overflow-hidden bg-primary" id="home">
+
                     <div class="container">
                         <div class="row flex-center">
 
@@ -29,35 +47,43 @@ const Cart = () => {
                                         <div class="tab-content mt-3" id="nav-tabContent">
 
                                             {
-                                                productList.map((items, index) => {
+                                                productList.map((item, index) => {
                                                     return (
-                                                        <div style={{ "padding": "25px" }} class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                        <div key={index} style={{ "padding": "25px" }} class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
                                                             <form class="row gx-2 gy-2 align-items-center">
-                                                                <div  class="col">
+
+                                                                <div class="col">
+
                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="productName" type="text" placeholder="Enter Product Name" />
+                                                                        <input onChange={(e) => onValueChange(e, index)} name="product" class="form-control input-box form-foodwagon-control" id="productName" type="text" placeholder="Enter Product Name" />
                                                                     </div>
+
                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="price" type="text" placeholder="Enter Price" />
+                                                                        <input onChange={(e) => onValueChange(e, index)} name="price" class="form-control input-box form-foodwagon-control" id="price" type="text" placeholder="Enter Price" />
                                                                     </div>
+
                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                        <input class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
+                                                                        <input onChange={(e) => onValueChange(e, index)} name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
                                                                     </div>
+
                                                                 </div>
                                                                 {
                                                                     productList.length == index + 1 ?
                                                                         <div class="d-grid gap-3 col-sm-auto">
-                                                                            <button class="btn btn-danger" type="submit">Add Product</button>
+                                                                            <button class="btn btn-danger" onClick={(e) => {
+                                                                                e.preventDefault();
+                                                                                addProduct();
+                                                                            }} >
+                                                                                Add Product
+                                                                            </button>
                                                                         </div>
                                                                         : null
                                                                 }
 
                                                             </form>
-                                                            {productList.length == index + 1 ?
+                                                            {
+                                                                productList.length == index + 1 ?
                                                                 <form class="row gx-2 gy-2 align-items-center">
                                                                     <div class="col">
                                                                         <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
@@ -66,12 +92,11 @@ const Cart = () => {
                                                                         </div>
                                                                         <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                             <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                            <input class="form-control input-box form-foodwagon-control" id="total" type="text" placeholder='Total' />
+                                                                                <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total} />
                                                                         </div>
-                                                                    </div>
-
-
-                                                                </form> : null
+                                                                        </div>
+                                                                    </form>
+                                                                    : null
                                                             }
 
                                                         </div>
