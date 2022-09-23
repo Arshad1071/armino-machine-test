@@ -9,16 +9,17 @@ const Cart = () => {
     const addProduct = () => {
 
         setProductList([...productList, {}])
-
         let sum = 0;
-
         productList.forEach(item => {
             sum = sum + item.sub_total;
         })
-
         setTotal(sum);
 
     }
+
+    useEffect(() => {
+
+    }, [])
 
     const onValueChange = (e, index) => {
 
@@ -87,13 +88,22 @@ const Cart = () => {
                                                                         <input onChange={(e) => onValueChange(e, index)} name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
                                                                     </div>
 
-                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                        <input
+                                                                    {
+                                                                        index < productList.length - 1
+                                                                            ?
+                                                                            <>
+                                                                                <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                                    <input
                                                                             readOnly
                                                                             name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text"
                                                                             value={item.sub_total}
                                                                             placeholder="sub_total" />
-                                                                    </div>
+                                                                                </div> 
+                                                                            </>
+                                                                            : null
+                                                                    }
+
+
 
                                                                 </div>
                                                                 {
