@@ -52,6 +52,7 @@ const Cart = () => {
         }
 
         tempArr[index] = tempObj;
+
         setProductList(tempArr);
     }
 
@@ -141,7 +142,7 @@ const Cart = () => {
                                                                 <form class="row gx-2 gy-2 align-items-center">
                                                                         <div class="col">
                                                                             {
-                                                                                total > 10000 ?
+                                                                                total > 9999 ?
                                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
                                                                                         <input class="form-control input-box form-foodwagon-control" id="cpCode" type="text" value="PRIME123 is applied with a discount of 123" />
@@ -150,7 +151,7 @@ const Cart = () => {
                                                                                     null
                                                                             }
                                                                             {
-                                                                                total > 10000 ?
+                                                                                total > 9999 ?
                                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
                                                                                         <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total - 123} />
@@ -158,7 +159,6 @@ const Cart = () => {
                                                                                     <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                                         <label class="visually-hidden" for="inputDelivery">Address</label>
                                                                                         <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total} />
-
                                                                                     </div>
                                                                             }
 
