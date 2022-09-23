@@ -25,7 +25,6 @@ const Cart = () => {
         //     setTotal(sum);
         // }
 
-
     }
 
     useEffect(() => {
@@ -67,7 +66,7 @@ const Cart = () => {
 
                             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
 
-                                <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Cart</h1>
+                                <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Cart 1</h1>
 
                                 <div class="card w-xxl-75">
                                     <div class="card-body">
