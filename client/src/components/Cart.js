@@ -9,11 +9,22 @@ const Cart = () => {
     const addProduct = () => {
 
         setProductList([...productList, {}])
+
         let sum = 0;
+
         productList.forEach(item => {
             sum = sum + item.sub_total;
         })
+
         setTotal(sum);
+
+        // if (sum > 10000) {
+        //     let amt = sum - 123;
+        //     setTotal(amt);
+        // } else {
+        //     setTotal(sum);
+        // }
+
 
     }
 
@@ -59,12 +70,14 @@ const Cart = () => {
 
                                 <div class="card w-xxl-75">
                                     <div class="card-body">
+
                                         <nav>
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
                                                 <button class="nav-link mb-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-shopping-bag me-2"></i>Product List</button>
                                             </div>
                                         </nav>
+
                                         <div class="tab-content mt-3" id="nav-tabContent">
 
                                             {
@@ -88,16 +101,19 @@ const Cart = () => {
                                                                         <input onChange={(e) => onValueChange(e, index)} name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text" placeholder="Enter Qty" />
                                                                     </div>
 
+
                                                                     {
                                                                         index < productList.length - 1
                                                                             ?
                                                                             <>
-                                                                                <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                                <div style={{ "padding": "10px" }} class="input-group-icon">
+                                                                                    <i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                                                                     <input
                                                                             readOnly
                                                                             name="qty" class="form-control input-box form-foodwagon-control" id="qty" type="text"
                                                                             value={item.sub_total}
-                                                                            placeholder="sub_total" />
+                                                                                        placeholder="sub_total"
+                                                                                    />
                                                                                 </div> 
                                                                             </>
                                                                             : null
@@ -123,15 +139,30 @@ const Cart = () => {
                                                             {
                                                                 productList.length == index + 1 ?
                                                                 <form class="row gx-2 gy-2 align-items-center">
-                                                                    <div class="col">
-                                                                        <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                            <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                            <input class="form-control input-box form-foodwagon-control" id="cpCode" type="text" placeholder="Enter Cupone Code" />
-                                                                        </div>
-                                                                        <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                                            <label class="visually-hidden" for="inputDelivery">Address</label>
-                                                                                <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total} />
-                                                                        </div>
+                                                                        <div class="col">
+                                                                            {
+                                                                                total > 10000 ?
+                                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
+                                                                                        <input class="form-control input-box form-foodwagon-control" id="cpCode" type="text" value="PRIME123 is applied with a discount of 123" />
+                                                                                    </div>
+                                                                                    :
+                                                                                    null
+                                                                            }
+                                                                            {
+                                                                                total > 10000 ?
+                                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
+                                                                                        <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total - 123} />
+                                                                                    </div> :
+                                                                                    <div style={{ "padding": "10px" }} class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                                                        <label class="visually-hidden" for="inputDelivery">Address</label>
+                                                                                        <input class="form-control input-box form-foodwagon-control" id="total" type="text" value={total} />
+
+                                                                                    </div>
+                                                                            }
+
+
                                                                         </div>
                                                                     </form>
                                                                     : null
